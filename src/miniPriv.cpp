@@ -122,50 +122,80 @@ void miniKeyGenerate(int argc, char* argv[], const std::string& thetime)
 {
 	
 	const bool compressed(false);
-		std::cout << "Generating mini private key" << std::endl;
-		std::cout << "Press random keys or move the mouse if needed" << std::endl;
-		
-		const std::string randomStart = getFromDevRandom(28);
-		
-		BigInt<256> currentNum(randomStart, 'c');
-		
-		//const std::string hexStr = printBin(privKey.getBinaryVal(true));//ABC
-		
-		//Try if this has the correct hash start
-		
-		std::cout << std::endl;
-		for(int i = 0 ; i < 100000 ; i++)
+	// XTRIDENT - BEGIN: Prefix string.
+	const std::string addrprefix = "DELTA";
+	// XTRIDENT - END
+	// XTRIDENT - BEGIN: Suppress output.
+		//std::cout << "Generating mini private key" << std::endl;
+		//std::cout << "Press random keys or move the mouse if needed" << std::endl;
+	// XTRIDENT - END	
+		// XTRIDENT - BEGIN: Generate 1000 keys
+		bool iskey = false; // Keygen flag for count.
+		for(int keys = 0; keys < 1000; keys++)
 		{
-			//std::cout << "Current: " << currentNum;
-			const std::string b58 = Base58Encode(currentNum);
-			//std::cout << "Len: " << b58.size() << std::endl;
-			//std::cout << "Trying: " << b58;
+		// XTRIDENT - END
+			const std::string randomStart = getFromDevRandom(28);
 			
-			const std::string substr29 = b58.substr(b58.size() - 29);
-			//std::cout << "substr29: " << substr29 << std::endl;
+			BigInt<256> currentNum(randomStart, 'c');
 			
-			const std::string miniPrivTry = std::string("S") + substr29;
-			//std::cout << "\r";
-			std::cout << "Trying: " << miniPrivTry << "   " << i << "\r";
+			//const std::string hexStr = printBin(privKey.getBinaryVal(true));//ABC
 			
-			if(miniPrivChecksumOK(miniPrivTry))
+			//Try if this has the correct hash start
+			
+			// XTRIDENT - BEGIN: Suppress newline.
+			//std::cout << std::endl;
+			// XTRIDENT - END
+			for(int i = 0 ; i < 100000 ; i++)
 			{
-				//Make a last check, not really needed, but better be safe
-				if(!isValidMiniPriv(miniPrivTry))
+				//std::cout << "Current: " << currentNum;
+				const std::string b58 = Base58Encode(currentNum);
+				//std::cout << "Len: " << b58.size() << std::endl;
+				//std::cout << "Trying: " << b58;
+				
+				const std::string substr29 = b58.substr(b58.size() - (29 - (addrprefix.size())));
+				//std::cout << "substr29: " << substr29 << std::endl;
+				
+				// XTRIDENT - BEGIN: Include prefix in address.
+				const std::string miniPrivTry = std::string("S") + addrprefix + substr29;
+				// XTRIDENT - END
+				//std::cout << "\r";
+				std::cout << "Trying: " << miniPrivTry << "   " << i << "\r";
+				
+				if(miniPrivChecksumOK(miniPrivTry))
 				{
-					throw std::string("Internal error, incorrect mini priv key");
+					//Make a last check, not really needed, but better be safe
+					if(!isValidMiniPriv(miniPrivTry))
+					{
+						throw std::string("Internal error, incorrect mini priv key");
+					}
+					// XTRIDENT - BEGIN: Improve formatting.
+					//std::cout << "                                                           " << std::endl;
+					//std::cout << "Found mini private key: " << miniPrivTry << std::endl;
+					
+					BitcoinKeyPair keypair = convertMiniPriv(miniPrivTry, compressed);				
+					std::cout << miniPrivTry /* Mini private key */ << ":" << keypair.pubaddr.toString() /*.address*/;
+					// XTRIDENT - END
+				    // XTRIDENT - BEGIN: Break on key instead of return, set key flag.
+				    // return;
+				    iskey = true;
+					break;
+					// XTRIDENT - END
 				}
 				
-				std::cout << "                                                           " << std::endl;
-				std::cout << "Found mini private key: " << miniPrivTry << std::endl;
-				
-				const BitcoinKeyPair keypair = convertMiniPriv(miniPrivTry, compressed);				
-				std::cout << "The corresponding public address is: " << keypair.pubaddr.toString() /*.address*/ << std::endl;
-				return;
+				currentNum++;
 			}
-			
-			currentNum++;
+		// XTRIDENT - BEGIN: Check key flag, loop or return cleanly
+		    if(!iskey)
+		    {
+				keys--;
+			}
 		}
+		if(iskey)
+		{
+			std::cout << std::endl;
+			return;
+		}
+		// XTRIDENT - END
 
 		std::cout << "                                         " << std::endl;
 		std::cout << std::endl;

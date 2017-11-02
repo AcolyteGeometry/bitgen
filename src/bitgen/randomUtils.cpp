@@ -105,8 +105,9 @@ std::string getFromDevRandom(const int numVal)
 	for(int i = 0 ; i < numVal ; i++)
 	{
 		unsigned char buf = file.readOneChar();
-
-		std::cout << (numVal - i) << " " << std::flush;
+		// XTRIDENT - BEGIN: Suppress output.
+		//std::cout << (numVal - i) << " " << std::flush;
+		// XTRIDENT - END
 		
 		if(i % 16 == 15)
 		{
