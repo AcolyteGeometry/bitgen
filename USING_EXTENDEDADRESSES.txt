@@ -1,0 +1,60 @@
+Creating extended address mnmonics
+==================================
+
+Extended address mnemonics are created with the bitgen "genMnemonic" command.
+For example, the following command will create a random 24 word
+mnemoic with the corresponding extended address (xprv):
+
+$ bitgen genMnemonic random
+
+It is possible to use fewer than 24 words, the values 12, 15, 18, 21 and 24 are possible.
+In that case the number of words should be specified directly after
+the genMnemonic command, for example:
+
+$ bitgen genMnemonic 12 random
+
+This will generate a mnmonic with 12 words instead of 24. 
+However, for security reasons 24 words are adviced instead of
+a lower number. Mnemonics are normally generated infrequently, 
+and handling a few extra words is quickly done.
+
+Mnemonics for extend addresses can be created with the normal bitgen
+generation methods: random, dice, hex, hash. Also mnemonic inputs are
+supported with the generation method "mnemonic". This can be used to document
+an already created mnemonic. For example, the following commands will
+generate the xpr/xpub for the given mnemonic:
+
+$ bitgen genMnemonic mnemonic "must zoo master scissors wreck ugly vanish fetch caught address divert journey sleep scorpion damage uncle magnet food unknown ribbon forget orchard wrestle ring"
+
+$ bitgen genMnemonic mnemonic "federal loud rail garbage enlist ecology betray elephant airport float jewel hamster"
+
+When the generation methods hash, hex or dice is used the corresponding random data should be provided.
+
+For example, the following command line generates a mnemonic from the hash of the provided random data:
+
+$ bitgen genMnemonic hash ksdfhsdjfhhhHHHhHhJuiuwerywer76werweriuuiuiui1uiiuwruiyiuyyyqyqyqqqmmqkksjdfhsdfsdfsidfyuYYYuauuQWQQWETGsadfsdfuiuisuiuyuisdiuuiuyiyIUYiuYIUyIUYiUYgGGgghhHhhHHgGGydyyyyysdfsdfuytsdfuytsdfsdfsdfsdfsdufysdiufysidyfsidyfsidufyyysdfyfysdfysdifuysdiufysdiufysdifysdiuyfyyyYYYyyy7yyyyydsfysydfyy99sdfshdfhhh0djdfsgsdfsdfhgGGsdf
+
+An optional name can be specified for a generated extended mnemonic. This is specified
+with the keyword "name" followed by a text string, for example:
+
+
+$ bitgen genMnemonic random name "My extended test"
+
+
+When genMnemonic is used, the output may look like the following:
+
+Mnemonic: define super throw settle system hair arrow sound return endless buffalo town sick shrug wreck knock topic pelican price luggage canal dash result hope
+Extended privkey: xprv9s21ZrQH143K3o59X9eWHCQ4g4PnkqPJoJdFTHuZWcT7R6C9WtoUrFzfeb6q6Wqp8oyo6CTEDsDZFmXTjCEZFhD4eqyxEZCk6p214AgkF1w
+Extended pubkey : xpub661MyMwAqRbcGH9cdBBWeLLoE6EHAJ7AAXYrFgKB4wz6HtXJ4S7jQ4K9VuHpKCspRGqsuwrPeWFbpgyJco3SqNAaCmT4M6RRbsbjdAftkbF
+Derivation for Bitcoin (m/44H/0H/0H):
+Derived privkey : xprv9xfpjkpQuMNfdNGEZmGvmCkNTVgsGK6TriJsvsbpiFVXAR91g3wZ4ZTL1eko48Gf9GRhaZGsaX6PFRek2KzxVViFhUxTKJUyZaJpCxpwVgk
+Derived pubkey  : xpub661MyMwKB68aS17jSyXV1MGH5vV4Xsx7q8vvsQhaVsoHi1nUtPtHTgQdEU6VxaiBKBmWDzsJ5vfy8cCbek43D6fHR3aTgvsURAMYBipXYTb
+
+Saving file: mnemonic_24_80CBA3C32D3F404DBE9CC50CD0D1D555947687EAD3CF3D47D42E502AD20FDE84_private.txt
+Saving file: mnemonic_24_80CBA3C32D3F404DBE9CC50CD0D1D555947687EAD3CF3D47D42E502AD20FDE84_share.txt
+Saving file: mnemonic_24_80CBA3C32D3F404DBE9CC50CD0D1D555947687EAD3CF3D47D42E502AD20FDE84_private.ps
+Saving file: mnemonic_24_80CBA3C32D3F404DBE9CC50CD0D1D555947687EAD3CF3D47D42E502AD20FDE84_share.ps
+
+As always, the ps files can be converted to pdf with the command "ps2pdf".
+
+

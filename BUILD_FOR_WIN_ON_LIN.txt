@@ -1,0 +1,30 @@
+Building bitgen for Windows using Linux
+=======================================
+
+This document describes how to cross-compile bitgen for Windows
+using Ubuntu Linux. The end result is Windows exe-files, 
+but Windows is not used during the build process, only Linux. 
+The dollar character ($) is the Linux prompt, and the 
+arrow (>) is the Windows prompt.
+
+To build bitgen for Windows, the Mingw-w64 C++ cross-compiler is used.
+
+In Ubuntu linux the g++ compiler can be installed 
+with the following command: 
+
+$ sudo apt-get install mingw-w64
+
+To build the bitcoin software, use the makefile Makefile.windows:
+
+$ make -f Makefile.windows
+
+This will build exe-files that should be executed on a Windows PC.
+
+Copy the files to a Windows machine and run the tests:
+
+> bitgen test
+> bitsig test
+> bitcry test
+
+Always run the tests when moving to a different platform.
+

@@ -1,0 +1,47 @@
+Creating transactions
+=====================
+
+Raw transactions are created using the bitgen "transaction" command, 
+for example:
+
+$ bitgen transaction 2364782648723648726384762837462873648273648726348723648726348762 0 L4mTKgeZ6XTkaFkwhhTFMw8aBUpVQeusEWYe49etscFMxq23UY7J 10.0 out 1C4VZGHQk1AXQghBR8d38bsHZf1mznMszM 9.999
+
+First the inputs are listed, followed by the keyword "out", 
+followed by the outputs. 
+
+The inputs are given by four items:
+
+1. Tx hash
+2. Tx index
+3. Private key (wif)
+4. Input amount
+
+If the private key is prefixed with an undescore ("_"), 
+an old-style pay-to-pubkey is assumed. 
+
+The input amount must be given, but can be specified as 0. 
+The value is not used in the transaction, but is used to
+calculate the supplied fee. If the value is not correct or zero, 
+the fee calculation will be incorrect. However, 
+this will not change the raw transaction that is created.
+
+Any number of inputs can be specified (but at least one)
+
+The outputs are specified by two items:
+1. Address
+2. Amount
+
+The Amount is the value the will be specified in the raw transaction.
+
+The address is normally an address, but can also be specifed as
+"OP_RETURN". In this case no amount should be given, 
+instead a string for inclusion in the block chain should be given.
+
+Any number of outputs can be specified (but at least one)
+
+Here are som other examples of a valid transactions:
+
+$ bitgen transaction 2364782648723648726384762837462873648273648726348723648726348762 0 _L4mTKgeZ6XTkaFkwhhTFMw8aBUpVQeusEWYe49etscFMxq23UY7J 10.0 out 1C4VZGHQk1AXQghBR8d38bsHZf1mznMszM 9.999 OP_RETURN "This is a test"
+$ bitgen transaction 2364782648723648726384762837462873648273648726348723648726348762 0 _L4mTKgeZ6XTkaFkwhhTFMw8aBUpVQeusEWYe49etscFMxq23UY7J 0 out 1C4VZGHQk1AXQghBR8d38bsHZf1mznMszM 9.999 1ML21iKPGLVHi56mEWCrgLMHdsN7t4njwy 1.2
+
+

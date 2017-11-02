@@ -1,0 +1,16 @@
+The testcry.py test script requires the a private and public key 
+has been imported before the test start.
+
+The private key is:
+5KjdzDrcyBfXDsRjwX5Uy5yZmSnKDPEWFujXP29LTiZpoJxWqeA
+
+In order to import the private key, give the following command:
+$ bitcry importPrivate 5KjdzDrcyBfXDsRjwX5Uy5yZmSnKDPEWFujXP29LTiZpoJxWqeA
+
+
+The public key is:
+114MiwXTLxFHHDtvyBjbv9YxEV1QTwy8xf
+
+To import the public key, give the following command:
+$ bitcry import 114MiwXTLxFHHDtvyBjbv9YxEV1QTwy8xf myname 89EC86B8
+

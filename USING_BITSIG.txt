@@ -1,0 +1,346 @@
+Use of different bitsig commands
+================================
+
+Bitsig is a command line tool that can be used for signing and
+signature verification of bitcoin signatures. 
+
+Bitsig can be used in two ways: with or without a local key chain.
+If no key chain is used, the nessesary information such as private 
+and public keys have to be given on the command line.
+
+But if a key chain database is used, keys does not have to be entered
+at the command line if they are already present in the key chain.
+
+The database of keys is stored in the folder ".bitsig" in the
+home directory of the used.
+
+In version 0.8 there is no encryption of the private keys stored
+in the keychain, and this means that care must be taken so private
+keys do not leak. Ideally, the computer with bitgen installed
+should not be connected to any network at all, and should be 
+stored in a room with enough physical security. 
+
+
+Quick start
+===========
+
+For a quick start, try the following commands:
+$ bitsig random
+$ echo test > test.txt
+$ bitsig sign test.txt
+$ bitsig verify test.txt
+
+
+Commands in bitsig
+==================
+
+This following commands are some of the commands used in bitsig:
+
+* hex
+* dice
+* random
+* hash
+* list
+* listown
+* listprivate
+* listpublic
+* import
+* importprivate
+* setdef
+* delete
+* sign
+* verify
+
+
+Key chain manipulation commands
+===============================
+
+list
+====
+The "list" command lists all the stored keys in the keychain, 
+both private and public. For private keys the corresponding public
+address is shown, not the private information.
+
+The command is invoked as follows:
+
+$ bitsig list
+
+
+listOwn
+=======
+The "listOwn" command lists all keys that you have the private
+key for, ie your own keys. The actual private keys are not displayed
+bydefault. Instead the corresponding bitcoin address is shown for 
+each private key. In order to also see the private key values, 
+the extra argument "private" should be supplied.
+
+The command is invoked as follows:
+
+$ bitsig listOwn
+or
+$ bitsig listOwn private
+
+
+listPublic
+==========
+The "listPublic" command lists all keys that you have imported with
+only the public part, not the private key.
+
+Example invocation:
+
+$ bitsig listPublic
+
+
+import
+======
+The "import" command is used to import a public address which 
+you trust. The imported public addresses are later accepted when
+you verify a signature. Each imported address is given a name.
+Since the imported addresses are trusted, 
+and may give signature verification acceptance, an extra checksum
+has to be given on the command line. The purpose of this 
+checksum is that it should not be possible to accidentally
+accept an address. 
+
+Example invocation:
+$ bitsig import 1BCGStc2DNwrpmdJ9m8iQbhCaiwp4LM1xX Bob
+
+This will try to import the addres for the name "Bob".
+However, since no checksum is given, nothing will be imported.
+Instead a checksum will be provided by bitsig: "1E201C84".
+
+In order to actually store the address, the command has to be given
+a second time with the checksum:
+
+$ bitsig import 1BCGStc2DNwrpmdJ9m8iQbhCaiwp4LM1xX Bob 1E201C84
+
+The address will now be stored as a trusted public address.
+
+
+importPrivate
+=============
+The "importPrivate" command imports a private key to be used to
+sign messages with. This is you own key which should not be shared 
+publicly. This might be a key that was previously generated with
+the generation commands ("random", "dice", etc)
+
+The key should be given in the WIF format. Example invocation:
+
+$ bitsig importPrivate 5HtmLuruZ16aatBqU8ukt6r5wi5sm7yizCKFA62K4wJgJS6B8rg
+
+
+setDef
+======
+The "setDef" command sets the default private key for signing.
+The private key must already exist in the keychain. This means
+that it must either have been created with the key creation commands, 
+or it have been imported. 
+
+To set the key as the default the public address corresponding to the
+private key should be given on the command line.
+
+Example invocation:
+
+$ bitsig setDef 1MFEt14ZjnHx3Z9tR497r1QFnehXP6tUWz
+
+delete
+======
+The "delete" command deletes a key from the keychain. 
+The key can be either a public or a private key. 
+The key must exist in the keychain.
+
+In order to delete a key the public address must be given, as well as
+a checksum. The checksum is required in order to protect accidental 
+deletion. When given without the checksum, the checksum will be
+provided by bitsig. 
+
+Example invocation:
+
+$ bitsig delete 1NhEnnc5q7uFRr8sUNaFgAWDiTVTeFHzuX
+and
+$ bitsig delete 1NhEnnc5q7uFRr8sUNaFgAWDiTVTeFHzuX 825466EA
+
+
+hex, dice, random, hash
+========================
+
+The commands "random", "hex", "dice" and "hash" are used to create
+new private keys stored in the local keychain.
+
+They behave the same way as in "bitgen", see the bitgen documentation
+for a complete description of these commands. 
+The difference in bitsig is that instead of generating outout files
+with the information, the information is stored in the local keychain
+in the ".bitsig" folder in the users home directory. 
+
+For example, the following command will create a random private key
+and store it in the keychain:
+
+$ bitsig random
+
+
+
+sign
+====
+The "sign" command signs a file using a private key.
+
+A filename should be given as argument.
+
+Example: 
+
+$ bitsig sign test.txt
+
+This will sign the file "test.txt" with the default private key in
+the key chain. The result is a ".bitsig" file, in this case:
+    "test.txt.bitsig".
+
+This file is the signature of the file given at the command line.
+
+If no private key exist in the key chain it is not possible to sign.
+
+verify
+======
+The "verify" command verifies a file signature to match a public address.
+
+A file that is signed should be specified on the command line, 
+for example "test.txt".
+
+Optionally, the .bitsig file can be specified on the command line.
+However, bitsig assumens that the bitsig file has the same name
+as the signed file, but with the ".bitsig" extension, for example
+"test.txt.bitsig". 
+
+This means that the following two commands perform the same 
+signature verification:
+
+$ bitsig verify test.txt
+and
+$ bitsig verify test.txt test.txt.bitsig
+
+It is strongly recommended that the filename of the bitsig is kept
+as the original filename plus the .bitsig extension. 
+The signature file should not be renamed. 
+
+The signature file must end with ".bitsig", no other extension are
+permitted. 
+
+When the signature is checked, the keychain is searched for a match. 
+Both public and private keys are searched for a matched
+(For private keys the corresponding public address is used.)
+
+It is however possible to specify a public address to be used for
+the verification. If this is done the keys in the keychain will
+not be searched, only the given key.
+In this case the address must be specified as the third argument
+after the "verify" command, for example: 
+
+$ bitsig verify test.txt test.txt.bitsig 13tY61WiLC2ujRF8RmRuZJSjZqskrp89pm
+
+This will verify the signature for "test.txt" uwing the address
+"13tY61WiLC2ujRF8RmRuZJSjZqskrp89pm".
+
+
+signRaw
+=======
+The "signRaw" command signs a given message text using the
+raw bitcoin signature format. The text to be signed should be
+given on the command line, for example: 
+
+$ bitsig signRaw "test this thing"
+
+This will result in a base64-encoded string, for example:
+"G3G9/FsqL01vQvlN/CEIbZXZdfXoq7smNxFp/56aOSaHa3GiyF/GhrFlzNIQBKaKdL8JOLvwS7rDJtimaETSRDg="
+
+This string is the signature of the text message.
+
+The private key used for the signture is the default private key
+in the key chain. 
+
+verifyRaw
+=========
+The "verifyRaw" command verifies a signed message in the
+raw bitcoin format. Both the message and the signature have to be
+given, for example: 
+
+$ bitsig verifyRaw "test this thing" G6RY/o+o/U2zO1r07fCE3DdG4mCUlBb9XwqRQI8fexLtSNo4uam3YCyhocFvgOJ9lNE1qAlG4r61jfKKqwwFP4w=
+
+This will search the key chain for the address specified
+by the signature, and verify is the signature matches this address.
+
+
+signMultibit | signArmory | signAb64 | signAclear | signInputsIo
+================================================================
+These commands signs a message in a particular signature format.
+These formats are specific for different bitcoin wallets:
+
+* Multibit
+* Armory
+* Armory base64
+* Armory clearsign
+* Inputs Io
+
+For each signature format, the message to be signed should be
+specified on the command line:
+
+$ bitsig signMultibit "test"
+$ bitsig signArmory "test"
+$ bitsig signAb64 "test"
+$ bitsig signAclear "test"
+$ bitsig signInputsIo "test"
+
+
+verifyMultibit | verifyArmory | verifyAb64 | verifyAclear | verifyInputsIo 
+==========================================================================
+These commands verifies a message in a particular signature format.
+These formats are specific for different bitcoin wallets:
+
+* Multibit
+* Armory
+* Armory base64
+* Armory clearsign
+* Inputs Io
+
+The signed message file should be specified on the command line:
+
+$ bitsig verifyMultibit 9CE428D5.multibit
+$ bitsig verifyArmory 518C8DF0.armory
+$ bitsig signAb64 9CE428D5.armoryb64
+$ bitsig verifyAclear 9CE428D5.armoryclear
+$ bitsig verifyInputsIo 9CE428D5.inputsio
+
+verifyMessage
+=============
+The "verifyMessage" is a generic verification command that
+takes any of the above wallet specific format, and determines
+which format has been used. The signature is then verified
+for this format. 
+
+Note that full file messages and raw messages can not be verified
+in this manner. For them, the correct format has to be specified. 
+
+Example invocation:
+
+$ bitsig verifyMessage 9CE428D5.inputsio
+
+This will first identify the format, and then perform a message 
+verification.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

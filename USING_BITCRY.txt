@@ -1,0 +1,173 @@
+
+Use of bitcry for encryption
+============================
+
+Bitcry uses a local key chain to store private and public keys.
+
+The easiest way to use bitcry is to store keys in the keychain, 
+bit it is also possible to specify keys directly on the command line. 
+
+Creating a private key and store it in the keychain
+===================================================
+
+A private key can be created with the same commands as for bitgen.
+
+For example, the following command will create a new private key
+and store it in the key chain:
+
+$ bitcry random
+
+For information about other key creating command, see the bitgen
+documentantion.
+
+Show information about the local key chain
+==========================================
+
+The bitcry "list" command shows all encryption keys in the
+key chain:
+
+$ bitcry list
+
+First yout own keys are shown, which means the keys that you
+have the private key for. 
+
+The pkif for the key is shown (starting with "7"), 
+and this is the public key you can give to others so they can 
+encrypt information for you.
+
+Next, the public keys from others are shown. This is public keys for
+which there is no corresponding private key. 
+
+
+Importing public keys to the local keychain
+===========================================
+A public key from someone else is imported with the "import" command. 
+
+The pkif and a name should be given, for example:
+
+$ bitcry import 7Twou9oFR4fhkrGct9Gsqc3SZ11812U8JhgM9ZJgnkyrVub8Pya Bob
+
+This will not directly store the public key in the key chain.
+Instread it gives you a checksum that should be given in order to 
+store the key. The command should be given a second time with 
+the checksum, for example: 
+
+$ bitcry import 7Twou9oFR4fhkrGct9Gsqc3SZ11812U8JhgM9ZJgnkyrVub8Pya Bob A2866921
+
+This will import the public key and store it as user "Bob". 
+
+You can use the "list" command to see the Bob entry:
+
+$ bitcry list
+
+This will display:
+============================
+1 7Twou9oFR4fhkrGct9Gsqc3SZ11812U8JhgM9ZJgnkyrVub8Pya  Bob
+============================
+
+
+Encrypting a file to a specified receiver
+=========================================
+
+In order to encrypt a file for a specific receiver the "encrypt"
+command should be used. We assume the the file to be encrypted
+has the name "message.txt":
+
+$ echo "My secret text" > message.txt
+
+bitcry should be given the "encrypt" command followed by the receiver
+of the message, for example: 
+
+$ bitcry encrypt message.txt Bob
+
+This will encrypt the message file for the receiver "Bob" which
+should exist in the keychain.
+
+It is also possible to give the pkif on the command line as the recipient, 
+for example:
+
+$ bitcry encrypt message.txt 7Twou9oFR4fhkrGct9Gsqc3SZ11812U8JhgM9ZJgnkyrVub8Pya
+
+This is identical campared to using a alias instead of the pkif.
+
+The end result is a ".bitcry" file, in this case:
+      message.txt.bitcry
+
+The contents of the file might look like the following:
+
+------ BEGIN BITCOIN SECP256K1 FILE ENCRYPT ------
+7Twou9oFR4fhkrGct9Gsqc3SZ11812U8JhgM9ZJgnkyrVub8Pya
+02CDEF341FE1B1B489576FB4B1965DB6E19A0BE444CFB571F5ADB856C43EAB9800
+0CF71D7F11A04CA94BCDA79F29B8DF36353D0EE317ABFFCDE5D66CFEE8845FE7
+------ END BITCOIN SECP256K1 FILE ENCRYPT ------
+
+This bitcry file contains the encrypted data, and can be sent over
+insecure channels to the receiver of the message. 
+Only the person in possession of the private key can decrypt the message
+
+
+Decrypting an encrypted file
+============================
+
+Decryption of a "bitsig" file is done with the "decrypt" command. 
+
+The file name of the bitcry file should be given as a parameter. 
+If the private key for the message exists in the key chain,
+no additional parameter is needed, but it is also possible to
+given the private key wif as the last argument on the command line.
+
+To decrypt with the private key in the keychain:
+
+$ bitcry decrypt message.txt.bitcry
+
+This will give a file starting with "out_", but without the "bitsig"
+extension: "out_message.txt".
+
+This file will be identical to the original file:
+
+$ diff message.txt out_message.txt
+(No differences)
+
+
+Encrypting using the Electrum file format
+=========================================
+
+Encryption of a message with the Electrum file format is done with the
+"encryptElectrum" command, for example:
+
+$ bitcry encryptElectrum "My message" Alice
+EncStr: QklFMQPMSr8b9X6eo20p6XcGnV3Bh3OfUoerx+IHNqLgSuHb+LsuSXQ8TkmuNqQafpe1RbP7DeOrqi3U6zes+6cogJHH+SRopPUIw0JfEZ1eirptyg==
+
+Note that in this case a message should be given on the command line, 
+not a filename.
+
+The result of the encryption is a base64 encoded string, in this case:
+QklFMQPMSr8b9X6eo20p6XcGnV3Bh3OfUoerx+IHNqLgSuHb+LsuSXQ8TkmuNqQafpe1RbP7DeOrqi3U6zes+6cogJHH+SRopPUIw0JfEZ1eirptyg==
+
+
+Decryption the Electrum file format
+===================================
+The Electrum file format is decrypted using the "decryptElectrum" command, 
+followed by the base64 string, for example: 
+
+$ bitcry decryptElectrum QklFMQPMSr8b9X6eo20p6XcGnV3Bh3OfUoerx+IHNqLgSuHb+LsuSXQ8TkmuNqQafpe1RbP7DeOrqi3U6zes+6cogJHH+SRopPUIw0JfEZ1eirptyg==
+
+This will print the decrypted message to standard out:
+Message: My message
+
+Note that the private key corresponding to the public key that
+was used to encrypt the message must be present in the key chain.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

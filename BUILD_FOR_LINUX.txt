@@ -1,0 +1,65 @@
+Building and installing bitgen for Linux
+========================================
+
+To build bitgen, a C++ compiler must be installed.
+In Ubuntu linux the g++ compiler can be installed 
+with the following command: 
+
+$ sudo apt-get install g++
+
+To build the bitcoin software for a x86 PC, just use make:
+
+$ make
+
+(If you are building for another platform, such as a raspberry pie, 
+give the following command instead:
+
+$ make withoutbw
+)
+
+
+
+When the build is ready, run the tests:
+
+$ make test
+
+Always run the tests when moving to a different platform.
+
+bitgen can now be run from the local directory by prefixing with "./":
+
+./bitgen
+
+In order to access the bitgen binary from any location, 
+copy the binary to (for example) "/usr/local/bin":
+
+$ sudo cp bitgen /usr/local/bin
+
+Bitgen is now ready for use, for example:
+
+$ bitgen random
+$ bitgen hex 872364827364876f66f6fefafafccbb687678687687687623432423432243342
+$ bitgen dice 1263512356125362153621536523652525255252526521165236512352653126532165213626252524414414244242452525
+$ bitgen brainwallet "This iis mY littSmall sentenze thAt only IIII rememberz? OhYes you cant do that apple!"
+
+
+You can also use the "hash" option. In this case, just type *many* random letters on the keyboard:
+
+$ bitgen hash adslkjdsakjdsfkjdsakjdskjdskfdjslkdsfjkldsjlkfdsjdslkjf
+dslkjdfslksdjflkdsjfslkjdsflkjsdlkjdfslkdsjlkfdjhgfhhdhfdsjsdhfkjdhsf
+kjhsdfkjhdsfkjhfdskjdsfhkjfsdudsayfdsiusadiuysaiudasyiusadyiuasysdiuy
+sadiuyasiudysaiusdahjhfhhfhhfhhhHHHHHHjhdkjhsdkjhfskjdhfkjdhfkjsdhfs9
+d87fs987sdkjhfsdkjhfkjhdskjdhsfkjsdhfsd76ds8768s7d6fiusdhfsidjfysiufy
+iusdyf876df87sd6fiudzyusdyuysyysysuysdiuasydiuasyufyyfyyfydsysiduyfis
+uyuyduydiudsyiufsyiudsfyyyfyyfyfdyfdisudysidfuyfsiuydfstttdstdtdtttdt
+dttdydfsuysdtfsuytdfuytdsuytfdsudysfiuyduyfsdufyuudyudyfudyfduydsuydf
+uyduyfduydiudsyifsuyiudsyudfsyfsydsffsisdufdsysdiuydiuydsudydydyydydy
+ydydhfhfhhfjksdhfksjhdfjkdhhhfdhhdfhhfakjasdjkashdfakjhsjshsjhskjdhjs
+hdjasdhdskajhadskjhaskjdhhhdhjdhadskjhsakjhdsakjhaskdhakjshdkjashdkja
+hjkshaskjdsahkjasdhkjsadhsjhasdkjhdaskjhsakjdhaskjhdkajhsdakjhasdjsdh
+sjshhshshhshsgsggsgshsahgdajsdgajhsgdhshdgdsjhsagdsajhg
+
+
+This should give a fairly good private key.
+
+
+

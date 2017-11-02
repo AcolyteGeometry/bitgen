@@ -1,0 +1,49 @@
+Building bitgen for Windows using Windows
+==========================================
+
+This document describes how to build bitgen for Windows using Windows.
+(No cross-compile from Linux)
+
+To build bitgen for Windows, MSYS2 and the Mingw-w64 C++ compiler is used.
+
+First install MSYS2 on Windows. Go to the following page:
+https://msys2.github.io/
+
+Follow the instruction on the page, and install the minimal run-time system. 
+
+This will include the following commands:
+$ update-core
+$ pacman -Su
+$ pacman -Syu
+
+A reboot seems to be needed during the installation.
+
+Next, install the mingw-w64 C++ compiler using pacman:
+$ pacman -S mingw-w64-i686-gcc
+
+Install "make" and "tar"
+$ pacman -S make
+$ pacman -S tar
+
+Next, copy the tar-file to the work folder, for example:
+C:\msys64\home\user
+
+Unpack the files and go the the new folder:
+$ tar -xvf bitgen_0.12.tar
+$ cd bitgen_0.12
+
+Build with make:
+$ make -f Makefile.windows
+
+Finally, run the unit tests:
+
+$ ./bitgen test
+$ ./bitsig test
+$ ./bitcry test
+
+The exe-files can be used from a normal windows command window, 
+and in that case the prefix "./" is not needed:
+
+$ bitgen test
+$ bitsig test
+$ bitcry test

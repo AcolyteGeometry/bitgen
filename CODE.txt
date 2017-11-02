@@ -1,0 +1,10 @@
+
+The bitgen software contains open source code 
+from the following projects:
+
+* sha2, Aaron D. Gifford
+* RIPEMD-160, Dwayne C. Litzenberger  
+* libqrencode, Kentaro Fukuchi, https://fukuchi.org/works/qrencode/
+
+
+

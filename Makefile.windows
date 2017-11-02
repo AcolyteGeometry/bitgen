@@ -1,0 +1,367 @@
+#Generated makefile for cross-compiling for Windows on Linux
+
+COMPILE=i686-w64-mingw32-g++ -O2 -msse2 -I. -Isrc -Isrc/bitlib/bigintctl -Isrc/bitlib -Isrc/qrenc -Isrc/argon -Isrc/bitgen -DSHA2_USE_INTTYPES_H -DBYTE_ORDER=LITTLE_ENDIAN -static -c
+
+all: bitsig bitcry bitcalc btc bctest bitcoin bitcoincash dogecoin feathercoin litecoin namecoin peercoin vertcoin 
+
+withoutbw: bitsig bitcry bitcalc btc bctest_nobw bitcoin_nobw bitcoincash_nobw dogecoin_nobw feathercoin_nobw litecoin_nobw namecoin_nobw peercoin_nobw vertcoin_nobw 
+
+test:
+	./bitgen test
+
+bctest: objwin/bitgen_bctest.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bctest_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-bctest.exe objwin/bitgen_bctest.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bctest_specific.o 
+
+bitcoin: objwin/bitgen_bitcoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen.exe objwin/bitgen_bitcoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+
+btc: objwin/bitgen_bitcoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-btc.exe objwin/bitgen_bitcoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+
+bitcoincash: objwin/bitgen_bitcoincash.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoincash_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-bcc.exe objwin/bitgen_bitcoincash.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoincash_specific.o 
+
+dogecoin: objwin/bitgen_dogecoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_dogecoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-doge.exe objwin/bitgen_dogecoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_dogecoin_specific.o 
+
+feathercoin: objwin/bitgen_feathercoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_feathercoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-ftc.exe objwin/bitgen_feathercoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_feathercoin_specific.o 
+
+litecoin: objwin/bitgen_litecoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_litecoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-ltc.exe objwin/bitgen_litecoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_litecoin_specific.o 
+
+namecoin: objwin/bitgen_namecoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_namecoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-nmc.exe objwin/bitgen_namecoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_namecoin_specific.o 
+
+peercoin: objwin/bitgen_peercoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_peercoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-ppc.exe objwin/bitgen_peercoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_peercoin_specific.o 
+
+vertcoin: objwin/bitgen_vertcoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_vertcoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitgen-vtc.exe objwin/bitgen_vertcoin.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_vertcoin_specific.o 
+
+bitsig: objwin/bitsig.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitsig.exe objwin/bitsig.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+
+bitcry: objwin/bitcry.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitcry.exe objwin/bitcry.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+
+bitcalc: objwin/bitcalc.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+	i686-w64-mingw32-g++ -pthread -static -o bitcalc.exe objwin/bitcalc.o objwin/EncryptedResult.o objwin/ExtendedKey.o objwin/GenerationMethods.o objwin/GenerationParameters.o objwin/HierarchialRandom.o objwin/RSVal.o objwin/RangeSearcher.o objwin/SaveFolderHandler.o objwin/Script.o objwin/ScriptItem.o objwin/VanitySearcher.o objwin/addressConversion.o objwin/aes.o objwin/amount.o objwin/base64.o objwin/binaryTransaction.o objwin/bitcalccli.o objwin/bitgenConfig.o objwin/bitgencli.o objwin/bitsigConfig.o objwin/bitsigFileFormat.o objwin/commandLine.o objwin/encrypt.o objwin/encryptionFileFormats.o objwin/hmac.o objwin/keychainFunc.o objwin/license.o objwin/miniPriv.o objwin/predicates.o objwin/scriptdecoder.o objwin/sigFile.o objwin/signature.o objwin/signatureFileFormats.o objwin/transaction.o objwin/transactionSignatureChecker.o objwin/transactiondecoder.o objwin/unittest.o objwin/usagePrintout.o objwin/argon2d-ref.o objwin/blake2b-ref.o objwin/Directory.o objwin/FileUtil.o objwin/WinRandom.o objwin/bitcoinKeyPair.o objwin/electrumMnemonic.o objwin/keyDerivationFunction.o objwin/language.o objwin/mnemonic.o objwin/mnemonicBase.o objwin/nonblockFile.o objwin/postscriptGeneration.o objwin/printPS.o objwin/qrenc.o objwin/random.o objwin/randomUtils.o objwin/simpleFile.o objwin/txtGeneration.o objwin/url.o objwin/util.o objwin/ECPoint.o objwin/base58.o objwin/bitcoinEC.o objwin/hash.o objwin/multiSig.o objwin/pkif.o objwin/privKey.o objwin/pubAddress.o objwin/pubKey.o objwin/ripemd160.o objwin/sha2.o objwin/testutils.o objwin/timelock.o objwin/wif.o objwin/bigintutil.o objwin/bitstream.o objwin/mask.o objwin/mmask.o objwin/mqrspec.o objwin/qrencode.o objwin/qrinput.o objwin/qrspec.o objwin/rscode.o objwin/split.o objwin/currencySpecific_bitcoin_specific.o 
+
+objwin/EncryptedResult.o: src/EncryptedResult.cpp
+	$(COMPILE) -o objwin/EncryptedResult.o src/EncryptedResult.cpp
+
+objwin/ExtendedKey.o: src/ExtendedKey.cpp
+	$(COMPILE) -o objwin/ExtendedKey.o src/ExtendedKey.cpp
+
+objwin/GenerationMethods.o: src/GenerationMethods.cpp
+	$(COMPILE) -o objwin/GenerationMethods.o src/GenerationMethods.cpp
+
+objwin/GenerationParameters.o: src/GenerationParameters.cpp
+	$(COMPILE) -o objwin/GenerationParameters.o src/GenerationParameters.cpp
+
+objwin/HierarchialRandom.o: src/HierarchialRandom.cpp
+	$(COMPILE) -o objwin/HierarchialRandom.o src/HierarchialRandom.cpp
+
+objwin/RSVal.o: src/RSVal.cpp
+	$(COMPILE) -o objwin/RSVal.o src/RSVal.cpp
+
+objwin/RangeSearcher.o: src/RangeSearcher.cpp
+	$(COMPILE) -o objwin/RangeSearcher.o src/RangeSearcher.cpp
+
+objwin/SaveFolderHandler.o: src/SaveFolderHandler.cpp
+	$(COMPILE) -o objwin/SaveFolderHandler.o src/SaveFolderHandler.cpp
+
+objwin/Script.o: src/Script.cpp
+	$(COMPILE) -o objwin/Script.o src/Script.cpp
+
+objwin/ScriptItem.o: src/ScriptItem.cpp
+	$(COMPILE) -o objwin/ScriptItem.o src/ScriptItem.cpp
+
+objwin/VanitySearcher.o: src/VanitySearcher.cpp
+	$(COMPILE) -o objwin/VanitySearcher.o src/VanitySearcher.cpp
+
+objwin/addressConversion.o: src/addressConversion.cpp
+	$(COMPILE) -o objwin/addressConversion.o src/addressConversion.cpp
+
+objwin/aes.o: src/aes.cpp
+	$(COMPILE) -o objwin/aes.o src/aes.cpp
+
+objwin/amount.o: src/amount.cpp
+	$(COMPILE) -o objwin/amount.o src/amount.cpp
+
+objwin/base64.o: src/base64.cpp
+	$(COMPILE) -o objwin/base64.o src/base64.cpp
+
+objwin/binaryTransaction.o: src/binaryTransaction.cpp
+	$(COMPILE) -o objwin/binaryTransaction.o src/binaryTransaction.cpp
+
+objwin/bitcalc.o: src/bitcalc.cpp
+	$(COMPILE) -o objwin/bitcalc.o src/bitcalc.cpp
+
+objwin/bitcalccli.o: src/bitcalccli.cpp
+	$(COMPILE) -o objwin/bitcalccli.o src/bitcalccli.cpp
+
+objwin/bitcry.o: src/bitcry.cpp
+	$(COMPILE) -o objwin/bitcry.o src/bitcry.cpp
+
+objwin/bitgenConfig.o: src/bitgenConfig.cpp
+	$(COMPILE) -o objwin/bitgenConfig.o src/bitgenConfig.cpp
+
+objwin/bitgen_bctest.o: src/bitgen_bctest.cpp
+	$(COMPILE) -o objwin/bitgen_bctest.o src/bitgen_bctest.cpp
+
+objwin/bitgen_bitcoin.o: src/bitgen_bitcoin.cpp
+	$(COMPILE) -o objwin/bitgen_bitcoin.o src/bitgen_bitcoin.cpp
+
+objwin/bitgen_bitcoincash.o: src/bitgen_bitcoincash.cpp
+	$(COMPILE) -o objwin/bitgen_bitcoincash.o src/bitgen_bitcoincash.cpp
+
+objwin/bitgen_dogecoin.o: src/bitgen_dogecoin.cpp
+	$(COMPILE) -o objwin/bitgen_dogecoin.o src/bitgen_dogecoin.cpp
+
+objwin/bitgen_feathercoin.o: src/bitgen_feathercoin.cpp
+	$(COMPILE) -o objwin/bitgen_feathercoin.o src/bitgen_feathercoin.cpp
+
+objwin/bitgen_litecoin.o: src/bitgen_litecoin.cpp
+	$(COMPILE) -o objwin/bitgen_litecoin.o src/bitgen_litecoin.cpp
+
+objwin/bitgen_namecoin.o: src/bitgen_namecoin.cpp
+	$(COMPILE) -o objwin/bitgen_namecoin.o src/bitgen_namecoin.cpp
+
+objwin/bitgen_peercoin.o: src/bitgen_peercoin.cpp
+	$(COMPILE) -o objwin/bitgen_peercoin.o src/bitgen_peercoin.cpp
+
+objwin/bitgen_vertcoin.o: src/bitgen_vertcoin.cpp
+	$(COMPILE) -o objwin/bitgen_vertcoin.o src/bitgen_vertcoin.cpp
+
+objwin/bitgencli.o: src/bitgencli.cpp
+	$(COMPILE) -o objwin/bitgencli.o src/bitgencli.cpp
+
+objwin/bitsig.o: src/bitsig.cpp
+	$(COMPILE) -o objwin/bitsig.o src/bitsig.cpp
+
+objwin/bitsigConfig.o: src/bitsigConfig.cpp
+	$(COMPILE) -o objwin/bitsigConfig.o src/bitsigConfig.cpp
+
+objwin/bitsigFileFormat.o: src/bitsigFileFormat.cpp
+	$(COMPILE) -o objwin/bitsigFileFormat.o src/bitsigFileFormat.cpp
+
+objwin/commandLine.o: src/commandLine.cpp
+	$(COMPILE) -o objwin/commandLine.o src/commandLine.cpp
+
+objwin/encrypt.o: src/encrypt.cpp
+	$(COMPILE) -o objwin/encrypt.o src/encrypt.cpp
+
+objwin/encryptionFileFormats.o: src/encryptionFileFormats.cpp
+	$(COMPILE) -o objwin/encryptionFileFormats.o src/encryptionFileFormats.cpp
+
+objwin/hmac.o: src/hmac.cpp
+	$(COMPILE) -o objwin/hmac.o src/hmac.cpp
+
+objwin/keychainFunc.o: src/keychainFunc.cpp
+	$(COMPILE) -o objwin/keychainFunc.o src/keychainFunc.cpp
+
+objwin/license.o: src/license.cpp
+	$(COMPILE) -o objwin/license.o src/license.cpp
+
+objwin/miniPriv.o: src/miniPriv.cpp
+	$(COMPILE) -o objwin/miniPriv.o src/miniPriv.cpp
+
+objwin/predicates.o: src/predicates.cpp
+	$(COMPILE) -o objwin/predicates.o src/predicates.cpp
+
+objwin/scriptdecoder.o: src/scriptdecoder.cpp
+	$(COMPILE) -o objwin/scriptdecoder.o src/scriptdecoder.cpp
+
+objwin/sigFile.o: src/sigFile.cpp
+	$(COMPILE) -o objwin/sigFile.o src/sigFile.cpp
+
+objwin/signature.o: src/signature.cpp
+	$(COMPILE) -o objwin/signature.o src/signature.cpp
+
+objwin/signatureFileFormats.o: src/signatureFileFormats.cpp
+	$(COMPILE) -o objwin/signatureFileFormats.o src/signatureFileFormats.cpp
+
+objwin/transaction.o: src/transaction.cpp
+	$(COMPILE) -o objwin/transaction.o src/transaction.cpp
+
+objwin/transactionSignatureChecker.o: src/transactionSignatureChecker.cpp
+	$(COMPILE) -o objwin/transactionSignatureChecker.o src/transactionSignatureChecker.cpp
+
+objwin/transactiondecoder.o: src/transactiondecoder.cpp
+	$(COMPILE) -o objwin/transactiondecoder.o src/transactiondecoder.cpp
+
+objwin/unittest.o: src/unittest.cpp
+	$(COMPILE) -o objwin/unittest.o src/unittest.cpp
+
+objwin/usagePrintout.o: src/usagePrintout.cpp
+	$(COMPILE) -o objwin/usagePrintout.o src/usagePrintout.cpp
+
+objwin/argon2d-ref.o: src/argon/argon2d-ref.cpp
+	$(COMPILE) -o objwin/argon2d-ref.o src/argon/argon2d-ref.cpp
+
+objwin/blake2b-ref.o: src/argon/blake2b-ref.cpp
+	$(COMPILE) -o objwin/blake2b-ref.o src/argon/blake2b-ref.cpp
+
+objwin/Directory.o: src/bitgen/Directory.cpp
+	$(COMPILE) -o objwin/Directory.o src/bitgen/Directory.cpp
+
+objwin/FileUtil.o: src/bitgen/FileUtil.cpp
+	$(COMPILE) -o objwin/FileUtil.o src/bitgen/FileUtil.cpp
+
+objwin/WinRandom.o: src/bitgen/WinRandom.cpp
+	$(COMPILE) -o objwin/WinRandom.o src/bitgen/WinRandom.cpp
+
+objwin/bitcoinKeyPair.o: src/bitgen/bitcoinKeyPair.cpp
+	$(COMPILE) -o objwin/bitcoinKeyPair.o src/bitgen/bitcoinKeyPair.cpp
+
+objwin/electrumMnemonic.o: src/bitgen/electrumMnemonic.cpp
+	$(COMPILE) -o objwin/electrumMnemonic.o src/bitgen/electrumMnemonic.cpp
+
+objwin/keyDerivationFunction.o: src/bitgen/keyDerivationFunction.cpp
+	$(COMPILE) -o objwin/keyDerivationFunction.o src/bitgen/keyDerivationFunction.cpp
+
+objwin/language.o: src/bitgen/language.cpp
+	$(COMPILE) -o objwin/language.o src/bitgen/language.cpp
+
+objwin/mnemonic.o: src/bitgen/mnemonic.cpp
+	$(COMPILE) -o objwin/mnemonic.o src/bitgen/mnemonic.cpp
+
+objwin/mnemonicBase.o: src/bitgen/mnemonicBase.cpp
+	$(COMPILE) -o objwin/mnemonicBase.o src/bitgen/mnemonicBase.cpp
+
+objwin/nonblockFile.o: src/bitgen/nonblockFile.cpp
+	$(COMPILE) -o objwin/nonblockFile.o src/bitgen/nonblockFile.cpp
+
+objwin/postscriptGeneration.o: src/bitgen/postscriptGeneration.cpp
+	$(COMPILE) -o objwin/postscriptGeneration.o src/bitgen/postscriptGeneration.cpp
+
+objwin/printPS.o: src/bitgen/printPS.cpp
+	$(COMPILE) -o objwin/printPS.o src/bitgen/printPS.cpp
+
+objwin/qrenc.o: src/bitgen/qrenc.cpp
+	$(COMPILE) -o objwin/qrenc.o src/bitgen/qrenc.cpp
+
+objwin/random.o: src/bitgen/random.cpp
+	$(COMPILE) -o objwin/random.o src/bitgen/random.cpp
+
+objwin/randomUtils.o: src/bitgen/randomUtils.cpp
+	$(COMPILE) -o objwin/randomUtils.o src/bitgen/randomUtils.cpp
+
+objwin/simpleFile.o: src/bitgen/simpleFile.cpp
+	$(COMPILE) -o objwin/simpleFile.o src/bitgen/simpleFile.cpp
+
+objwin/txtGeneration.o: src/bitgen/txtGeneration.cpp
+	$(COMPILE) -o objwin/txtGeneration.o src/bitgen/txtGeneration.cpp
+
+objwin/url.o: src/bitgen/url.cpp
+	$(COMPILE) -o objwin/url.o src/bitgen/url.cpp
+
+objwin/util.o: src/bitgen/util.cpp
+	$(COMPILE) -o objwin/util.o src/bitgen/util.cpp
+
+objwin/ECPoint.o: src/bitlib/ECPoint.cpp
+	$(COMPILE) -o objwin/ECPoint.o src/bitlib/ECPoint.cpp
+
+objwin/base58.o: src/bitlib/base58.cpp
+	$(COMPILE) -o objwin/base58.o src/bitlib/base58.cpp
+
+objwin/bitcoinEC.o: src/bitlib/bitcoinEC.cpp
+	$(COMPILE) -o objwin/bitcoinEC.o src/bitlib/bitcoinEC.cpp
+
+objwin/currencySpecific_bctest_specific.o: src/bitlib/currencySpecific_bctest_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_bctest_specific.o src/bitlib/currencySpecific_bctest_specific.cpp
+
+objwin/currencySpecific_bitcoin_specific.o: src/bitlib/currencySpecific_bitcoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_bitcoin_specific.o src/bitlib/currencySpecific_bitcoin_specific.cpp
+
+objwin/currencySpecific_bitcoincash_specific.o: src/bitlib/currencySpecific_bitcoincash_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_bitcoincash_specific.o src/bitlib/currencySpecific_bitcoincash_specific.cpp
+
+objwin/currencySpecific_dogecoin_specific.o: src/bitlib/currencySpecific_dogecoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_dogecoin_specific.o src/bitlib/currencySpecific_dogecoin_specific.cpp
+
+objwin/currencySpecific_feathercoin_specific.o: src/bitlib/currencySpecific_feathercoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_feathercoin_specific.o src/bitlib/currencySpecific_feathercoin_specific.cpp
+
+objwin/currencySpecific_litecoin_specific.o: src/bitlib/currencySpecific_litecoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_litecoin_specific.o src/bitlib/currencySpecific_litecoin_specific.cpp
+
+objwin/currencySpecific_namecoin_specific.o: src/bitlib/currencySpecific_namecoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_namecoin_specific.o src/bitlib/currencySpecific_namecoin_specific.cpp
+
+objwin/currencySpecific_peercoin_specific.o: src/bitlib/currencySpecific_peercoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_peercoin_specific.o src/bitlib/currencySpecific_peercoin_specific.cpp
+
+objwin/currencySpecific_vertcoin_specific.o: src/bitlib/currencySpecific_vertcoin_specific.cpp
+	$(COMPILE) -o objwin/currencySpecific_vertcoin_specific.o src/bitlib/currencySpecific_vertcoin_specific.cpp
+
+objwin/hash.o: src/bitlib/hash.cpp
+	$(COMPILE) -o objwin/hash.o src/bitlib/hash.cpp
+
+objwin/multiSig.o: src/bitlib/multiSig.cpp
+	$(COMPILE) -o objwin/multiSig.o src/bitlib/multiSig.cpp
+
+objwin/pkif.o: src/bitlib/pkif.cpp
+	$(COMPILE) -o objwin/pkif.o src/bitlib/pkif.cpp
+
+objwin/privKey.o: src/bitlib/privKey.cpp
+	$(COMPILE) -o objwin/privKey.o src/bitlib/privKey.cpp
+
+objwin/pubAddress.o: src/bitlib/pubAddress.cpp
+	$(COMPILE) -o objwin/pubAddress.o src/bitlib/pubAddress.cpp
+
+objwin/pubKey.o: src/bitlib/pubKey.cpp
+	$(COMPILE) -o objwin/pubKey.o src/bitlib/pubKey.cpp
+
+objwin/ripemd160.o: src/bitlib/ripemd160.cpp
+	$(COMPILE) -o objwin/ripemd160.o src/bitlib/ripemd160.cpp
+
+objwin/sha2.o: src/bitlib/sha2.cpp
+	$(COMPILE) -o objwin/sha2.o src/bitlib/sha2.cpp
+
+objwin/testutils.o: src/bitlib/testutils.cpp
+	$(COMPILE) -o objwin/testutils.o src/bitlib/testutils.cpp
+
+objwin/timelock.o: src/bitlib/timelock.cpp
+	$(COMPILE) -o objwin/timelock.o src/bitlib/timelock.cpp
+
+objwin/wif.o: src/bitlib/wif.cpp
+	$(COMPILE) -o objwin/wif.o src/bitlib/wif.cpp
+
+objwin/bigintutil.o: src/bitlib/bigintctl/bigintutil.cpp
+	$(COMPILE) -o objwin/bigintutil.o src/bitlib/bigintctl/bigintutil.cpp
+
+objwin/bitstream.o: src/qrenc/bitstream.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/bitstream.o -c src/qrenc/bitstream.c
+
+objwin/mask.o: src/qrenc/mask.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/mask.o -c src/qrenc/mask.c
+
+objwin/mmask.o: src/qrenc/mmask.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/mmask.o -c src/qrenc/mmask.c
+
+objwin/mqrspec.o: src/qrenc/mqrspec.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/mqrspec.o -c src/qrenc/mqrspec.c
+
+objwin/qrencode.o: src/qrenc/qrencode.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/qrencode.o -c src/qrenc/qrencode.c
+
+objwin/qrinput.o: src/qrenc/qrinput.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/qrinput.o -c src/qrenc/qrinput.c
+
+objwin/qrspec.o: src/qrenc/qrspec.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/qrspec.o -c src/qrenc/qrspec.c
+
+objwin/rscode.o: src/qrenc/rscode.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/rscode.o -c src/qrenc/rscode.c
+
+objwin/split.o: src/qrenc/split.c
+	i686-w64-mingw32-gcc -DHAVE_CONFIG_H -o objwin/split.o -c src/qrenc/split.c
+
+
+
+clean:
+	rm -f *.o *.exe obj/*.o objwin/*.o bitgen bitsig bitcry bitcalc bitgen-btc bitgen-ltc bitgen-doge bitgen-testnet bitgen-nmc bitgen-ppc bitgen-vtc bitgen-rdd bitgen-ftc bitgen-bctest bitgen-bcc
+
