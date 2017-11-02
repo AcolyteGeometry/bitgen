@@ -22,6 +22,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "randomUtils.h"
 #include "base58.h"
@@ -75,16 +76,14 @@ bool isValidMiniPriv(const std::string miniAddr)
 
 
 	//Are there only base58 characters?
-	for(int i = 0 ; i < miniAddr.size() ; i++)
+	// XTRIDENT - BEGIN: Refactor Base58 Check
+	if(!isBase58(miniAddr))
 	{
-		const char c = miniAddr[i];
-		if(!isBase58Char(c))
-		{
-			std::cout << "Error, the char: " << c << " is not permitted in base58" << std::endl;
-			throw std::string("Error, non base58 char in mime private key");
-		}
+		std::cout << "Error, illegal base58 character." << std::endl;
+		throw std::string("Error, non base58 char in mime private key");
 	}
-		
+	// XTRIDENT - END
+	
 	if(!miniPrivChecksumOK(miniAddr))
 	{
 		throw std::string("Incorrect checksum for mini private key");
@@ -92,8 +91,19 @@ bool isValidMiniPriv(const std::string miniAddr)
 		
 	return true;
 }
-
-
+// XTRIDENT - BEGIN: Refactor Base58 Check for prefix.
+bool isBase58(const std::string b58str) {
+	for(int i = 0 ; i < b58str.size() ; i++)
+	{
+		const char c = b58str[i];
+		if(!isBase58Char(c))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+// XTRIDENT - END
 
 
 
@@ -120,18 +130,55 @@ BitcoinKeyPair convertMiniPriv(const std::string& miniAddr, const bool compresse
 
 void miniKeyGenerate(int argc, char* argv[], const std::string& thetime)
 {
-	
 	const bool compressed(false);
-	// XTRIDENT - BEGIN: Prefix string.
-	const std::string addrprefix = "DELTA";
+	// XTRIDENT - BEGIN: Arguments
+	std::string addrprefix = "";
+	int bulkint = 1; // number of addresses to generate.
+	for (int i = 1; i < argc; ++i)
+	{
+        std::string arg = argv[i];
+        if(arg == "prefix")
+        {
+			if (i + 1 < argc) {
+				addrprefix = argv[i+1];
+			}
+			else
+			{ // Prefix not provided.
+                std::cerr << "prefix option requires one argument." << std::endl;
+                return;
+            }
+		}
+		else if(arg == "bulk")
+		{
+			if (i + 1 < argc) {
+				std::string bulkstr = argv[i+1]; // string for bulk number int.
+				for(int i = 0; i < bulkstr.size(); i++)
+				{
+					const char c = bulkstr[i];
+					if(!isdigit(c))
+					{
+						std::cout << "Error: " << c << " is not permitted in bulk <int>" << std::endl;
+						throw std::string("Error: non integer char in bulk number.");
+					}
+				}
+				bulkint = std::stoi(bulkstr); // convert bulk string to int.
+			}
+			else
+			{ // bulk integer not provided.
+                std::cerr << "bulk option requires one argument as integer." << std::endl;
+                return;
+            }
+		}
+	}
+	
 	// XTRIDENT - END
 	// XTRIDENT - BEGIN: Suppress output.
 		//std::cout << "Generating mini private key" << std::endl;
 		//std::cout << "Press random keys or move the mouse if needed" << std::endl;
 	// XTRIDENT - END	
-		// XTRIDENT - BEGIN: Generate 1000 keys
+		// XTRIDENT - BEGIN: Generate bulk keys
 		bool iskey = false; // Keygen flag for count.
-		for(int keys = 0; keys < 1000; keys++)
+		for(int keys = 0; keys < bulkint; keys++)
 		{
 		// XTRIDENT - END
 			const std::string randomStart = getFromDevRandom(28);

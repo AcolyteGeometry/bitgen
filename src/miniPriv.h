@@ -28,6 +28,9 @@
 
 void miniKeyGenerate(int argc, char* argv[], const std::string& thetime);
 bool isValidMiniPriv(const std::string miniAddr);
+// XTRIDENT - BEGIN: Add method signature.
+bool isBase58(const std::string b58str);
+// XTRIDENT - END
 BitcoinKeyPair convertMiniPriv(const std::string& miniAddr, const bool compressed);
 
 
