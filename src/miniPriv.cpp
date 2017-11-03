@@ -178,7 +178,7 @@ void miniKeyGenerate(int argc, char* argv[], const std::string& thetime)
 	// XTRIDENT - END	
 		// XTRIDENT - BEGIN: Generate bulk keys
 		bool iskey = false; // Keygen flag for count.
-		for(int keys = 0; keys < bulkint; keys++)
+		for(int keys = 0; keys < bulkint;)
 		{
 		// XTRIDENT - END
 			const std::string randomStart = getFromDevRandom(28);
@@ -221,6 +221,7 @@ void miniKeyGenerate(int argc, char* argv[], const std::string& thetime)
 					
 					BitcoinKeyPair keypair = convertMiniPriv(miniPrivTry, compressed);				
 					std::cout << miniPrivTry /* Mini private key */ << ":" << keypair.pubaddr.toString() /*.address*/;
+					keys++;
 					// XTRIDENT - END
 				    // XTRIDENT - BEGIN: Break on key instead of return, set key flag.
 				    // return;
@@ -232,10 +233,6 @@ void miniKeyGenerate(int argc, char* argv[], const std::string& thetime)
 				currentNum++;
 			}
 		// XTRIDENT - BEGIN: Check key flag, loop or return cleanly
-		    if(!iskey)
-		    {
-				keys--;
-			}
 		}
 		if(iskey)
 		{
